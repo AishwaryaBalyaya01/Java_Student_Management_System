@@ -5,17 +5,20 @@
  */
 package student_management_system;
 
+
 /**
  *
  * @author aishw
  */
 public class Student_Database_App {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Student student1 = new Student();
+        student1.enroll();
+        student1.payTution();
+        System.out.println(student1.showInfo());
+        // Ask how many users we want to add
+        // Create n number of new students
     }
     
 }
