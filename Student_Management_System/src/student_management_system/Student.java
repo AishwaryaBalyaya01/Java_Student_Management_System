@@ -16,23 +16,37 @@ public class Student {
     private String firstName;
     private String lastName;
     private int gradeYear;
+    private String gradeName;
     private String studentId;
     private String courses="";
     private int tutionBalance=0;
     private static int costOfCourse  =600; //Same for all students
     //Constructor: Prompts user to enter stuent'Name & Year
-        public Student(){
+        public Student(int n){
+            n=n+1;
             Scanner in = new Scanner(System.in);
-            System.out.print("Enter student First name: ");
+            System.out.print("Enter student"+n+" First name: ");
             this.firstName = in.nextLine();
             
-            System.out.print("Enter student Last name: ");
+            System.out.print("Enter student"+n+" Last name: ");
             this.lastName = in.nextLine();
             
-            System.out.println("1 for Freshmen\n2 for Sophomore\n3 for Junior\n4 for Graduate\nEnter student class level: ");
+            System.out.print("1 - Freshmen\n2 - Sophomore\n3 - Junior\n4 - Graduate\nEnter student class level: ");
             this.gradeYear = in.nextInt();
-            setStudentId();
-            
+            switch (gradeYear) {
+                case 1:  gradeName = "Freshmen";
+                         break;
+                case 2:  gradeName = "Sophomore";
+                         break;
+                case 3:  gradeName = "Junior";
+                         break;
+                case 4:  gradeName = "Graduate";
+                         break;
+                default: break;
+            }
+            setStudentId();//To generate ID
+            enroll(); //To enroll in courses
+            payTution(); //To make payment 
         }
     //Generate an Id
         
@@ -74,6 +88,6 @@ public class Student {
     
     //Show Status
        public String showInfo(){
-           return "Student Id: "+id+"\nName: "+firstName+" "+lastName+"\nGrade Level: "+gradeYear+"\nCourse Enrolled: "+courses+"\nTution Balance "+tutionBalance;
+           return "Student Id: "+studentId+"\nName: "+firstName+" "+lastName+"\nGrade Level: "+gradeYear+" "+gradeName+"\nCourse Enrolled: "+courses+"\nTution Balance "+tutionBalance;
        }
 }
